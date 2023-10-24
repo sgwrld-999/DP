@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -36,7 +35,7 @@ class Solution{
     }
 
 
-    int longestCommonSubstr (string S1, string S2, int n, int m)
+    int longestCommonSubstr(string S1, string S2, int n, int m)
     {
         vector<vector<int>>dp(n+1,vector<int>(m+1,0));
         int maxAns = 0 ; 
@@ -59,11 +58,36 @@ int main()
     int t; cin >> t;
     while (t--)
     {
-        int n, m; cin >> n >> m;
+        int n, m; 
         string s1, s2;
-        cin >> s1 >> s2;
+        cout << "Enter the string : ";
+        cin >> s1 ;
+        n = s1.size();
+        for(int i = s1.size()-1 ; i >= 0 ; i--){
+            s2.push_back(s1[i]);
+        }
+        m = n ;
         vector<vector<int> > dp(n+1,vector<int>(m+1 , -1));
         Solution ob;
         cout << "The lenght of the longest substring is : " << ob.longestCommonSubStringRecursiveMemo (s1, s2, n, m, dp ) << endl;
+        vector<char> ans;
+        int i = n - 1 ; int j = m - 1 ;
+        while(i > 0 && j > 0){
+            if(s1[i] == s2[2]){
+                ans.push_back(s1[i]);
+                i--;
+                j--;
+            }
+            else if (dp[i-1][j] > dp[i][j-1]){
+                i--;
+            }else{
+                j--;
+            }
+        }
+        for (auto &i : ans)
+        {
+            cout << i << " ";
+        }
+        
     }
 }
