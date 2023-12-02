@@ -37,3 +37,37 @@ int main(){
     }
     return 0;
 }
+//___________________________________________________________
+/*
+java code 
+class Solution {
+    ArrayList<Long> nthRowOfPascalTriangle(int n) {
+        ArrayList<Long> ans = new ArrayList<>();
+        if (n == 1) {
+            ans.add(1L);
+            return ans;
+        }
+        if (n == 2) {
+            ans.add(1L);
+            ans.add(1L);
+            return ans;
+        }
+        int mod = (int) (1e9 + 7);
+        long[][] dp = new long[n + 1][n + 1];
+
+        for (int i = 0; i < n + 1; i++) {
+            for (int j = 0; j < i + 1; j++) {
+                if (j == 0 || j == i) {
+                    dp[i][j] = 1;
+                } else {
+                    dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j]) % mod;
+                }
+            }
+        }
+        for (int i = 0; i < n ; i++) {
+            ans.add(dp[n-1][i]);
+        }
+        return ans;
+    }
+}
+*/
