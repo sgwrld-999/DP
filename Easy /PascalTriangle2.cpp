@@ -40,6 +40,7 @@ int main(){
 //___________________________________________________________
 /*
 java code 
+GFG link : https://practice.geeksforgeeks.org/problems/nth-row-of-pascals-triangle5008/1
 class Solution {
     ArrayList<Long> nthRowOfPascalTriangle(int n) {
         ArrayList<Long> ans = new ArrayList<>();
