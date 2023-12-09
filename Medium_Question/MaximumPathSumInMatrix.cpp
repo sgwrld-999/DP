@@ -6,6 +6,7 @@ using namespace std;
 /*
 Problem name : Maximum path sum in matrix
 Problem link : https://practice.geeksforgeeks.org/problems/path-in-matrix3805/1#
+Problem link : https://leetcode.com/problems/minimum-falling-path-sum/
 */
 // } Driver Code Ends
 // User function Template for C++
