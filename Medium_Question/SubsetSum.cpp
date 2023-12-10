@@ -2,7 +2,7 @@
 //Initial template for C++
 /*
 Problem name : Subset Sum Problem
-Problem link : https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1#
+Problem link : https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1
 Problem link : https://leetcode.com/problems/partition-equal-subset-sum/
 Explanation :
 This is a problem based upon the subsequences of a array or string.
@@ -80,7 +80,6 @@ private:
                 dp[i][target] = dp[i - 1][target] || (target >= arr[i] ? dp[i - 1][target - arr[i]] : false);
             }
         }
-        printDP(dp);
         // The result is stored in the bottom-right corner of the DP table
         return dp[n - 1][sum];
     }
