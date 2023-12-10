@@ -26,7 +26,9 @@ Apprach :
     Space Complexity : O(N*N)
     where N is the size of the array.
 Afterwards we'll optimize the above approach by using memoization and tabulation.
-
+Sample imput : 
+    arr = {1,2,3,4,5}
+    target = 10
 */
 #include<bits/stdc++.h> 
 using namespace std; 
@@ -78,9 +80,18 @@ private:
                 dp[i][target] = dp[i - 1][target] || (target >= arr[i] ? dp[i - 1][target - arr[i]] : false);
             }
         }
-    
+        printDP(dp);
         // The result is stored in the bottom-right corner of the DP table
         return dp[n - 1][sum];
+    }
+    //Print the DP table
+    void printDP(vector<vector<bool>> dp) {
+        for (auto row : dp) {
+            for (auto col : row) {
+                cout << col << " ";
+            }
+            cout << endl;
+        }
     }
 public:
     bool isSubsetSum(vector<int>&arr, int sum){
