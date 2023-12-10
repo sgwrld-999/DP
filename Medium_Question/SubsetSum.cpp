@@ -25,7 +25,7 @@ Apprach :
     Time Complexity : O(2^N)
     Space Complexity : O(N*N)
     where N is the size of the array.
-Afterwards we'll optimize the above approach by using memoization and tabulation.\
+Afterwards we'll optimize the above approach by using memoization and tabulation.
 
 */
 #include<bits/stdc++.h> 
@@ -114,3 +114,37 @@ int main()
 } 
 
 // } Driver Code Ends
+
+/*
+CPP code for the problem : Partition Equal Subset Sum
+Problem link : https://leetcode.com/problems/partition-equal-subset-sum/
+class Solution {
+    public boolean solve(int idx, int target, int[] nums, int[][] dp) {
+        if (target == 0) return true;
+        if (idx == 0) return (nums[idx] == target);
+        if (dp[idx][target] != -1) return (dp[idx][target] == 1);
+
+        boolean notTake = solve(idx - 1, target, nums, dp);
+        boolean take = false;
+        if (target >= nums[idx]) {
+            take = solve(idx - 1, target - nums[idx], nums, dp);
+        }
+
+        dp[idx][target] = (take || notTake) ? 1 : 0;
+
+        return dp[idx][target] == 1;
+    }
+
+    public boolean canPartition(int[] nums) {
+        int sum = 0;
+        for (int it : nums) sum += it;
+        if (sum % 2 != 0) return false;
+
+        int[][] dp = new int[nums.length][sum / 2 + 1];
+        for (int[] row : dp) Arrays.fill(row, -1);
+
+        return solve(nums.length - 1, sum / 2, nums, dp);
+    }
+}
+
+*/
