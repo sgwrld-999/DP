@@ -1,0 +1,39 @@
+package Medium_Question;
+
+import java.util.Arrays;
+/*
+ * Problem naeme : Delete Operation for Two Strings
+ * Problem Link : https://leetcode.com/problems/delete-operation-for-two-strings/
+ * Explanation : 
+ *         We can use the same approach as we used in Longest Common Subsequence
+ *         and then we can subtract the length of LCS from the sum of length of both strings
+ *         to get the minimum number of deletions required to make both strings equal.
+ *         removing the common characters from both the string and remaining characters
+ *         are the one which we need to delete to make both the strings equal.
+ * 
+ */
+class Solution {
+    int solveUsingMemoization(String a, String b, int i, int j, int[][] dp) {
+        if (i == a.length() || j == b.length())
+            return 0;
+
+        if (dp[i][j] != -1) 
+            return dp[i][j];
+        
+        if (a.charAt(i) == b.charAt(j))
+            return dp[i][j] = 1 + solveUsingMemoization(a, b, i + 1, j + 1, dp);
+        else
+            return dp[i][j] = Math.max(solveUsingMemoization(a, b, i, j + 1, dp), solveUsingMemoization(a, b, i + 1, j, dp));
+    }
+    
+    public int minDistance(String word1, String word2) {
+       int a = word1.length();
+       int b = word2.length();
+       int[][] dp = new int[a+1][b+1];
+
+       for (int[] row : dp) Arrays.fill(row, -1);
+       
+       int common = solveUsingMemoization(word1, word2, 0, 0, dp);
+       return (word1.length() - common + word2.length() - common);
+    }
+}
