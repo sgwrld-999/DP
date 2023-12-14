@@ -64,7 +64,7 @@ public:
             } else {
                 if (dp[i - 1][j] > dp[i][j - 1]) {
                     superseq.push_back(str1[i - 1]);
-                    i--;
+                    i--; 
                 } else {
                     superseq.push_back(str2[j - 1]);
                     j--;
