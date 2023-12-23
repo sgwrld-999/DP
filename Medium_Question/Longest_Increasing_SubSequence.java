@@ -12,8 +12,22 @@ import java.util.List;
  *             - Approach 2 : Recursion + Memoization
 *              - Approach 3 : Tabulation
 *              - Approach 4 : Space Optimized Tabulation
-               - Approach 5 : Binary Search
+*              - Approach 5 : Count Storing Algorithm
+               - Approach 6 : Binary Search
     Approach 5 : 
+    The thought process behind this approach is that we will create a dp array which will store the count of the longest increasing subsequence
+    till that index. Intially we will fill the dp array with 1 because the longest increasing subsequence till that index is 1 or we can say that 
+    the element itself is the longest increasing subsequence. Now we will iterate over the array and for each element we will iterate over the
+    array from 0 to i-1 and if we find any element which is smaller than the current element then we will update the dp array with the maximum
+    of the current value of the dp array and the value of the dp array at that index + 1.
+    Example :
+    nums = [10,9,2,5,3,7,101,18]
+    dp =   [1, 1,1,1,1,1, 1, 1]
+    Iterating over array
+    Final dp array = [1,1,1,2,2,3,4,4] 
+    Now we can see that the last element of the dp array is the answer
+    NOTE : the dp array we've stored is not the answer but the last element of the dp array is the answer as we have to return the length of the
+    Approach 6 : 
     THe thought process behind this approach is that we will create a list which will be equal to the length of the array.
     Example : 
     nums = [10,9,2,5,3,7,101,18]
@@ -127,6 +141,22 @@ public class Longest_Increasing_SubSequence {
         }
 
         return ans.size();
+    }
+
+    public int countStoringAlgo(int[] nums){
+        int n = nums.length;
+        int[] dp = new int[n];
+        Arrays.fill(dp,1);
+        int max = 1;
+        for(int i = 1 ; i < n ; i++){
+            for(int j = 0 ; j < i ; j++){
+                if(nums[i] > nums[j]){
+                    dp[i] = Math.max(dp[i],dp[j]+1);
+                    max = Math.max(max,dp[i]);
+                }
+            }
+        }
+        return max;
     }
     public int lengthOfLIS(int[] nums) {
         int n = nums.length;
